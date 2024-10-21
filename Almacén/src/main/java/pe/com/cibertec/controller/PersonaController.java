@@ -56,7 +56,7 @@ public class PersonaController {
 	public String registrarPersona(@ModelAttribute("persona") PersonaEntity persona) {
 		// Crear el usuario con los datos del formulario
 		UsuarioEntity usuario = new UsuarioEntity();
-		usuario.setUsuario(persona.getCorreo()); // Asigna el correo como usuario
+		usuario.setUsuario(persona.getCorreo()); // Asigna el correo como nombre de usuario
 		usuario.setPassword(passwordEncoder.encode("defaultPassword")); // Puedes establecer una contraseña por defecto
 		usuario.setEstadoUsuario(estadoUsuarioService.buscarEstadoUsuarioPorId(1)); // Asigna estado predeterminado
 		usuario.setTipoUsuario(tipoUsuarioService.buscarTipoUsuarioPorId(1)); // Asigna tipo predeterminado
