@@ -9,13 +9,9 @@
 <body>
     <div class="container">
         <h1>Editar Usuario</h1>
-        <form th:action="@{/usuarios/editar_usuario/{id}(id=${user.id})}" th:object="${user}" method="post">
-            <input type="hidden" th:field="*{id}" /> 
-			<div class="form-group">
-			        <label for="usuario">Nueva Contraseña:</label>
-			        <input type="text" id="usuario" th:field="*{usuario}" class="form-control">
-			    </div>
-			<div class="form-group">
+        <form th:action="@{/usuario/editar_usuario/{correo}(correo=${usuario.correo})}" th:object="${usuario}" method="post">
+            <input type="hidden" th:field="*{correo}" /> <!-- Campo oculto para el correo -->
+            <div class="form-group">
                 <label for="password">Nueva Contraseña:</label>
                 <input type="password" id="password" th:field="*{password}" class="form-control">
             </div>
@@ -23,14 +19,14 @@
                 <label for="estado">Estado:</label>
                 <select id="estado" th:field="*{estadoUsuario}" class="form-control" required>
                     <option value="" disabled>Selecciona un estado</option>
-                    <option th:each="estado : ${listarEstadoUsario}" th:value="${estado.id}" th:text="${estado.descripcion}"></option>
+                    <option th:each="estado : ${listaEstados}" th:value="${estado.id}" th:text="${estado.descripcion}"></option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="tipoUsuario">Tipo de Usuario:</label>
                 <select id="tipoUsuario" th:field="*{tipoUsuario}" class="form-control" required>
                     <option value="" disabled>Selecciona un tipo de usuario</option>
-                    <option th:each="tipo : ${listarTipoUsuario}" th:value="${tipo.id}" th:text="${tipo.descripcion}"></option>
+                    <option th:each="tipo : ${listaTiposUsuarios}" th:value="${tipo.id}" th:text="${tipo.descripcion}"></option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Usuario</button>

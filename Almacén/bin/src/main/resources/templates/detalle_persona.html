@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Persona</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            margin: auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Detalle de la Persona</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Información de la Persona</h5>
+                <p><strong>ID:</strong> <span th:text="${persona.personaId}"></span></p>
+                <p><strong>Nombre:</strong> <span th:text="${persona.nombre}"></span></p>
+                <p><strong>Apellido:</strong> <span th:text="${persona.apellido}"></span></p>
+                <p><strong>Dirección:</strong> <span th:text="${persona.direccion != null ? persona.direccion : 'No especificada'}"></span></p>
+                <p><strong>Teléfono:</strong> <span th:text="${persona.telefono != null ? persona.telefono : 'No especificado'}"></span></p>
+                <p><strong>Correo:</strong> <span th:text="${persona.correo}"></span></p>
+                <p><strong>Usuario Asociado:</strong> <span th:text="${persona.usuario.usuario}"></span></p>
+            </div>
+        </div>
+        <div class="mt-3 text-center">
+            <a href="/personas/" class="btn btn-primary">Volver a la Lista</a>
+            <a href="/personas/editar_persona/${persona.personaId}" class="btn btn-secondary">Editar Persona</a>
+            <form action="/personas/delete/${persona.personaId}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta persona?');">Eliminar Persona</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

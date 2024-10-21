@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Proveedor</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Nuevo Proveedor</h1>
+        <form th:action="@{/proveedores/registrar_proveedor}" th:object="${proveedorCategoria}" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" th:field="*{direccion}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" th:field="*{telefono}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="proveedorCategoria">Categoría del Proveedor:</label>
+                <select id="proveedorCategoria" th:field="*{proveedorCategoria}" class="form-control" required>
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    <option th:each="categoria : ${listarProveedorCategoria}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Proveedor</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

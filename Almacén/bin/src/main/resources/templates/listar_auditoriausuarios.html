@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Auditorías de Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Listado de Auditorías de Usuario</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Correo Usuario</th>
+                    <th>Acción</th>
+                    <th>Fecha</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="auditoria : ${lista_auditorias_usuario}">
+                    <td th:text="${auditoria.auditoriaId}"></td>
+                    <td th:text="${auditoria.usuario.correo}"></td>
+                    <td th:text="${auditoria.accion}"></td>
+                    <td th:text="${auditoria.fecha}"></td>
+                    <td th:text="${auditoria.detalles}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

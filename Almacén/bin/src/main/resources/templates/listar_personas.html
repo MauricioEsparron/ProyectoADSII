@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Personas</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Listado de Personas</h1>
+        <a href="/personas/registrar_persona" class="btn btn-primary mb-3">Crear Nueva Persona</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="persona : ${lista_personas}">
+                    <td th:text="${persona.personaId}"></td>
+                    <td th:text="${persona.nombre}"></td>
+                    <td th:text="${persona.apellido}"></td>
+                    <td th:text="${persona.direccion}"></td>
+                    <td th:text="${persona.telefono}"></td>
+                    <td th:text="${persona.correo}"></td>
+                    <td>
+						<a th:href="@{/personas/detalle_persona/{id}(id=${persona.personaId})}" class="btn btn-info">Detalles</a>
+                        <a th:href="@{/personas/editar_persona/{id}(id=${persona.personaId})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{delete/{id}(id=${persona.personaId})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
