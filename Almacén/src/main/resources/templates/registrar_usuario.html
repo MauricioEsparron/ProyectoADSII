@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Nuevo Usuario</h1>
+        <form th:action="@{/usuarios/registrar_usuario}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" th:field="*{usuario}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" th:field="*{password}" class="form-control" required>
+            </div>
+			<div class="form-group">
+			    <label for="estadoUsuario">Estado de Usuario:</label>
+			    <select id="estadoUsuario" th:field="*{estadoUsuario}" class="form-control" required>
+			        <option value="" disabled selected>Selecciona un estado</option>
+			        <option th:each="estado : ${listarEstadoUsario}" th:value="${estado.id}" th:text="${estado.descripcion}"></option>
+			    </select>
+			</div>
+
+			<div class="form-group">
+			    <label for="tipoUsuario">Tipo de Usuario:</label>
+			    <select id="tipoUsuario" th:field="*{tipoUsuario}" class="form-control" required>
+			        <option value="" disabled selected>Selecciona un tipo</option>
+			        <option th:each="tipo : ${listarTipoUsuario}" th:value="${tipo.id}" th:text="${tipo.nombre}"></option>
+			    </select>
+			</div>
+
+            <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

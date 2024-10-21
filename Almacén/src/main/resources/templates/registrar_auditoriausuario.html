@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registrar Auditoría de Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Auditoría de Usuario</h1>
+        <form th:action="@{/auditoria_usuario/registrar_auditoria_usuario}" th:object="${auditoriaUsuario}" method="post">
+            <div class="form-group">
+                <label for="accion">Acción:</label>
+                <input type="text" id="accion" th:field="*{accion}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="detalles">Detalles:</label>
+                <textarea id="detalles" th:field="*{detalles}" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuario:</label>
+                <select id="usuario" th:field="*{usuario}" class="form-control" required>
+                    <option value="" disabled selected>Selecciona un usuario</option>
+                    <option th:each="usuario : ${listaUsuarios}" th:value="${usuario.correo}" th:text="${usuario.correo}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Auditoría</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
