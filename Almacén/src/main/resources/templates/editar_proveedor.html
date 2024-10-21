@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Editar Proveedor</h1>
-        <form th:action="@{/proveedor/editar_proveedor/{id}(id=${proveedor.id})}" th:object="${proveedor}" method="post">
+        <form th:action="@{/proveedores/editar_proveedor/{id}(id=${proveedor.id})}" th:object="${proveedor}" method="post">
             <input type="hidden" th:field="*{id}" /> <!-- Campo oculto para el ID -->
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
@@ -23,15 +23,15 @@
                 <label for="telefono">Teléfono:</label>
                 <input type="text" id="telefono" th:field="*{telefono}" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" th:field="*{proveedorCategoria}" class="form-control" required>
-                    <option value="" disabled>Selecciona una categoría</option>
-                    <option th:each="categoria : ${listaCategorias}" th:value="${categoria.id}" th:text="${categoria.descripcion}"></option>
-                </select>
-            </div>
+			<div class="form-group">
+			    <label for="proveedorCategoria">Categoría del Proveedor:</label>
+			    <select id="proveedorCategoria" th:field="*{proveedorCategoria}" class="form-control" required>
+			         <option value="" disabled selected>Selecciona una categoría</option>
+			         <option th:each="categoria : ${listarProveedorCategoria}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+			    </select>
+			</div>
             <button type="submit" class="btn btn-primary">Actualizar Proveedor</button>
-            <a th:href="@{/proveedor/}" class="btn btn-secondary">Cancelar</a>
+            <a th:href="@{/proveedores/}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

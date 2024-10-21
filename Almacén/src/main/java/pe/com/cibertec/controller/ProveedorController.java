@@ -20,57 +20,59 @@ import pe.com.cibertec.service.ProveedorService;
 @RequestMapping("/proveedores")
 public class ProveedorController {
 
-    @Autowired
-    private ProveedorService proveedorService;
-    
-    @Autowired 
-    private ProveedorCategoriaService proveedorCategoriaService;
+	@Autowired
+	private ProveedorService proveedorService;
 
-    @GetMapping("/")
-    public String listarProveedores(Model model) {
-        List<ProveedorEntity> listaProveedores = proveedorService.buscarProveedores();
-        model.addAttribute("lista_proveedores", listaProveedores);
-        return "listar_proveedores"; // Nombre de la vista que muestra la lista de proveedores
-    }
+	@Autowired
+	private ProveedorCategoriaService proveedorCategoriaService;
 
-    @GetMapping("/registrar_proveedor")
-    public String mostrarRegistrarProveedor(Model model) {
-        model.addAttribute("proveedorCategoria", new ProveedorEntity());
-        List<ProveedorCategoriaEntity> listaProveedorCategoria = proveedorCategoriaService.buscarProveedoresCaregoria();
-        model.addAttribute("listarProveedorCategoria", listaProveedorCategoria);
-        return "registrar_proveedor"; // Nombre de la vista para registrar un nuevo proveedor
-    }
+	@GetMapping("/")
+	public String listarProveedores(Model model) {
+		List<ProveedorEntity> listaProveedores = proveedorService.buscarProveedores();
+		model.addAttribute("lista_proveedores", listaProveedores);
+		return "listar_proveedores";
+	}
 
-    @PostMapping("/registrar_proveedor")
-    public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
-        proveedorService.crearProveedor(proveedor);
-        return "redirect:/proveedores/"; // Redirige a la lista de proveedores
-    }
+	@GetMapping("/registrar_proveedor")
+	public String mostrarRegistrarProveedor(Model model) {
+		model.addAttribute("proveedorCategoria", new ProveedorEntity());
+		List<ProveedorCategoriaEntity> listaProveedorCategoria = proveedorCategoriaService.buscarProveedoresCaregoria();
+		model.addAttribute("listarProveedorCategoria", listaProveedorCategoria);
+		return "registrar_proveedor";
+	}
 
-    @GetMapping("/detalle_proveedor/{id}")
-    public String verDetalleProveedor(Model model, @PathVariable("id") Integer id) {
-        ProveedorEntity proveedor = proveedorService.buscarProveedorPorId(id);
-        model.addAttribute("proveedor", proveedor);
-        return "detalle_proveedor"; // Nombre de la vista para ver detalles de un proveedor
-    }
+	@PostMapping("/registrar_proveedor")
+	public String registrarProveedor(@ModelAttribute("proveedor") ProveedorEntity proveedor) {
+		proveedorService.crearProveedor(proveedor);
+		return "redirect:/proveedores/";
+	}
 
-    @GetMapping("/editar_proveedor/{id}")
-    public String mostrarActualizarProveedor(@PathVariable("id") Integer id, Model model) {
-        ProveedorEntity proveedor = proveedorService.buscarProveedorPorId(id);
-        model.addAttribute("proveedor", proveedor);
-        return "editar_proveedor"; // Nombre de la vista para editar un proveedor
-    }
+	@GetMapping("/detalle_proveedor/{id}")
+	public String verDetalleProveedor(Model model, @PathVariable("id") Integer id) {
+		ProveedorEntity proveedor = proveedorService.buscarProveedorPorId(id);
+		model.addAttribute("proveedor", proveedor);
+		return "detalle_proveedor";
+	}
 
-    @PostMapping("/editar_proveedor/{id}")
-    public String actualizarProveedor(@PathVariable("id") Integer id,
-                                       @ModelAttribute("proveedor") ProveedorEntity proveedor) {
-        proveedorService.actualizarProveedor(id, proveedor);
-        return "redirect:/proveedores/"; // Redirige a la lista de proveedores
-    }
+	@GetMapping("/editar_proveedor/{id}")
+	public String mostrarActualizarProveedor(@PathVariable("id") Integer id, Model model) {
+		ProveedorEntity proveedor = proveedorService.buscarProveedorPorId(id);
+		model.addAttribute("proveedor", proveedor);
+		List<ProveedorCategoriaEntity> listaProveedorCategoria = proveedorCategoriaService.buscarProveedoresCaregoria();
+		model.addAttribute("listarProveedorCategoria", listaProveedorCategoria);
+		return "editar_proveedor";
+	}
 
-    @GetMapping("/delete/{id}")
-    public String eliminarProveedor(@PathVariable("id") Integer id) {
-        proveedorService.eliminarProveedor(id);
-        return "redirect:/proveedores/"; // Redirige a la lista de proveedores
-    }
+	@PostMapping("/editar_proveedor/{id}")
+	public String actualizarProveedor(@PathVariable("id") Integer id,
+			@ModelAttribute("proveedor") ProveedorEntity proveedor) {
+		proveedorService.actualizarProveedor(id, proveedor);
+		return "redirect:/proveedores/";
+	}
+
+	@GetMapping("/delete/{id}")
+	public String eliminarProveedor(@PathVariable("id") Integer id) {
+		proveedorService.eliminarProveedor(id);
+		return "redirect:/proveedores/";
+	}
 }
