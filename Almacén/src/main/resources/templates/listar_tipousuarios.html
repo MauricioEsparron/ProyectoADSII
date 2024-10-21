@@ -23,8 +23,8 @@
 					<td th:text="${tipoUsuario.nombre}"></td>
                     <td th:text="${tipoUsuario.descripcion}"></td>
                     <td>
-                        <a th:href="@{/tipo_usuario/detalle_tipo_usuario/{id}(id=${tipoUsuario.id})}" class="btn btn-info">Detalles</a>
-                        <a th:href="@{/tipo_usuario/editar_tipo_usuario/{id}(id=${tipoUsuario.id})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/tiposusuarios/detalle_tipousuario/{id}(id=${tipoUsuario.id})}" class="btn btn-info">Detalles</a>
+                        <a th:href="@{/tiposusuarios/editar_tipousuario/{id}(id=${tipoUsuario.id})}" class="btn btn-warning">Editar</a>
                         <a th:href="@{delete/{id}(id=${tipoUsuario.id})}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

@@ -35,7 +35,8 @@
                     <td th:text="${producto.estadoProducto.descripcion}"></td>
                     <td th:text="${producto.proveedor.nombre}"></td>
                     <td>
-                        <a th:href="@{/producto/editar_producto/{id}(id=${producto.id})}" class="btn btn-warning">Editar</a>
+						<a th:href="@{/productos/detalle_producto/{id}(id=${producto.id})}" class="btn btn-info">Detalles</a>
+                        <a th:href="@{/productos/editar_producto/{id}(id=${producto.id})}" class="btn btn-warning">Editar</a>
                         <a th:href="@{delete/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

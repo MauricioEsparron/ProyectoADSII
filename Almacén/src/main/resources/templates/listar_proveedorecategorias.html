@@ -21,6 +21,7 @@
                     <td th:text="${categoria.id}"></td>
                     <td th:text="${categoria.nombre}"></td>
                     <td>
+						<a th:href="@{/proveedorescategorias/detalle_proveedorcategoria/{id}(id=${categoria.id})}" class="btn btn-info">Detalles</a>
                         <a th:href="@{/proveedorescategorias/editar_proveedor_categoria/{id}(id=${categoria.id})}" class="btn btn-warning">Editar</a>
                         <a th:href="@{delete/{id}(id=${categoria.id})}" class="btn btn-danger">Eliminar</a>
                     </td>

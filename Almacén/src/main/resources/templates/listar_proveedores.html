@@ -27,8 +27,8 @@
                     <td th:text="${proveedor.telefono}"></td>
                     <td th:text="${proveedor.proveedorCategoria.nombre}"></td>
                     <td>
-                        <a th:href="@{/proveedor/detalle_proveedor/{id}(id=${proveedor.id})}" class="btn btn-info">Detalles</a>
-                        <a th:href="@{/proveedor/editar_proveedor/{id}(id=${proveedor.id})}" class="btn btn-warning">Editar</a>
+                        <a th:href="@{/proveedores/detalle_proveedor/{id}(id=${proveedor.id})}" class="btn btn-info">Detalles</a>
+                        <a th:href="@{/proveedores/editar_proveedor/{id}(id=${proveedor.id})}" class="btn btn-warning">Editar</a>
                         <a th:href="@{delete/{id}(id=${proveedor.id})}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>

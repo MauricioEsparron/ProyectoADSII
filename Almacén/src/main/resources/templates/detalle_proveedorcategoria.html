@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Categoría de Proveedor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Incluyendo Bootstrap desde CDN -->
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo claro para mayor contraste */
+        }
+        .card {
+            margin: auto; /* Centra el recuadro */
+            max-width: 600px; /* Ancho máximo del recuadro */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Detalle de la Categoría de Proveedor</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Información de la Categoría de Proveedor</h5>
+                <p><strong>ID:</strong> ${proveedorCategoria.id}</p>
+                <p><strong>Nombre:</strong> ${proveedorCategoria.nombre}</p> <!-- Cambiado a 'nombre' según la entidad -->
+            </div>
+        </div>
+        <div class="mt-3 text-center"> <!-- Centrar los botones -->
+            <a href="/proveedorescategorias/" class="btn btn-primary">Volver a la Lista</a>
+            <a href="/proveedorescategorias/editar_proveedorcategoria/${proveedorCategoria.id}" class="btn btn-secondary">Editar Categoría de Proveedor</a>
+            <form action="/proveedorescategorias/delete/${proveedorCategoria.id}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta categoría de proveedor?');">Eliminar Categoría de Proveedor</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
