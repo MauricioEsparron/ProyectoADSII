@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <h1>Registrar Nuevo Estado de Producto</h1>
-        <form th:action="@{/estado_producto/registrar_estado_producto}" th:object="${estadoProducto}" method="post">
+        <form th:action="@{/estadoproductos/registrar_estadoproducto}" th:object="${estadoProducto}" method="post">
             <div class="form-group">
                 <label for="descripcion">Descripción:</label>
                 <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control" required>

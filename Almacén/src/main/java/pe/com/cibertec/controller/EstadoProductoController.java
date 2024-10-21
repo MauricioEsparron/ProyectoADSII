@@ -25,45 +25,45 @@ public class EstadoProductoController {
 	public String listarEstadoProducto(Model model) {
 		List<EstadoProductoEntity> listaEstadoProducto = estadoProductoService.buscarEstadosProducto();
 		model.addAttribute("lista_estadoproducto", listaEstadoProducto);
-		return "listar_estadoproductos"; // Asegúrate de tener esta vista
+		return "listar_estadoproductos";
 	}
 
-	@GetMapping("/registrar")
+	@GetMapping("/registrar_estadoproducto")
 	public String mostrarRegistrarEstadoProducto(Model model) {
 		model.addAttribute("estadoProducto", new EstadoProductoEntity());
-		return "registrar_estadoproducto"; // Asegúrate de tener esta vista
+		return "registrar_estadoproducto";
 	}
 
-	@PostMapping("/registrar")
+	@PostMapping("/registrar_estadoproducto")
 	public String registrarEstadoProducto(@ModelAttribute("estadoProducto") EstadoProductoEntity estadoProducto) {
 		estadoProductoService.crearEstadoProducto(estadoProducto);
 		return "redirect:/estadoproductos/";
 	}
 
-	@GetMapping("/detalle/{id}")
+	@GetMapping("/detalle_estadoproducto/{id}")
 	public String verDetalle(Model model, @PathVariable("id") Integer id) {
 		EstadoProductoEntity estadoProducto = estadoProductoService.buscarEstadoProductoPorId(id);
 		model.addAttribute("estadoProducto", estadoProducto);
-		return "detalle_estadoproducto"; // Asegúrate de tener esta vista
+		return "detalle_estadoproducto";
 	}
 
-	@GetMapping("/editar/{id}")
-	public String mostrarActualizar(@PathVariable("id") Integer id, Model model) {
-		EstadoProductoEntity estadoProducto = estadoProductoService.buscarEstadoProductoPorId(id);
-		model.addAttribute("estadoProducto", estadoProducto);
-		return "editar_estadoproducto"; // Asegúrate de tener esta vista
-	}
-
-	@PostMapping("/editar/{id}")
-	public String actualizarEstadoProducto(@PathVariable("id") Integer id,
-			@ModelAttribute("estadoProducto") EstadoProductoEntity estadoProducto) {
-		estadoProductoService.actualizarEstadoProducto(id, estadoProducto);
+	@GetMapping("/delete/{id}")
+	public String eliminarEstadoProducto(@PathVariable("id") Integer id) {
+		estadoProductoService.eliminarEstadoProducto(id);
 		return "redirect:/estadoproductos/";
 	}
 
-	@GetMapping("/eliminar/{id}")
-	public String eliminarEstadoProducto(@PathVariable("id") Integer id) {
-		estadoProductoService.eliminarEstadoProducto(id);
+	@GetMapping("/editar_estadoproducto/{id}")
+	public String mostrarActualizar(@PathVariable("id") Integer id, Model model) {
+		EstadoProductoEntity estadoProducto = estadoProductoService.buscarEstadoProductoPorId(id);
+		model.addAttribute("estadoProducto", estadoProducto);
+		return "editar_estadoproducto";
+	}
+
+	@PostMapping("/editar_estadoproducto/{id}")
+	public String actualizarEstadoProducto(@PathVariable("id") Integer id,
+			@ModelAttribute("estadoProducto") EstadoProductoEntity estadoProducto) {
+		estadoProductoService.actualizarEstadoProducto(id, estadoProducto);
 		return "redirect:/estadoproductos/";
 	}
 }
