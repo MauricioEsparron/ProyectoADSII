@@ -21,8 +21,8 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Información de la Categoría de Proveedor</h5>
-                <p><strong>ID:</strong> ${proveedorCategoria.id}</p>
-                <p><strong>Nombre:</strong> ${proveedorCategoria.nombre}</p> <!-- Cambiado a 'nombre' según la entidad -->
+                <p><strong>ID:</strong> <span th:text="${proveedorCategoria.id}"></span></p>
+                <p><strong>Nombre:</strong> <span th:text="${proveedorCategoria.nombre}"></span></p> <!-- Cambiado a 'nombre' según la entidad -->
             </div>
         </div>
         <div class="mt-3 text-center"> <!-- Centrar los botones -->
