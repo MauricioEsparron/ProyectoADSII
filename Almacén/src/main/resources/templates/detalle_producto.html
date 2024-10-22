@@ -38,7 +38,7 @@
         <div class="mt-3 text-center">
             <a href="/productos/" class="btn btn-primary">Volver a la Lista</a>
             <a href="/productos/editar_producto/${producto.id}" class="btn btn-secondary">Editar Producto</a>
-            <form action="/productos/delete/${producto.id}" method="post" style="display:inline;">
+            <form action="@{delete/{id}(id=${producto.id})}" method="post" style="display:inline;">
                 <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este producto?');">Eliminar Producto</button>
             </form>
         </div>

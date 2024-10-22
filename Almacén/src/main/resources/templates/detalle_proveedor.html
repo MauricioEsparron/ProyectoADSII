@@ -21,11 +21,11 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Información del Proveedor</h5>
-                <p><strong>ID:</strong> ${proveedor.id}</p>
-                <p><strong>Nombre:</strong> ${proveedor.nombre}</p>
-                <p><strong>Dirección:</strong> ${proveedor.direccion != null ? proveedor.direccion : 'No especificada'}</p> <!-- Se agrega manejo de null -->
-                <p><strong>Teléfono:</strong> ${proveedor.telefono != null ? proveedor.telefono : 'No especificado'}</p> <!-- Se agrega manejo de null -->
-                <p><strong>Categoría:</strong> ${proveedor.proveedorCategoria.nombre}</p> <!-- Nombre de la categoría del proveedor -->
+                <p><strong>ID:</strong> <span th:text="${proveedor.id}"></span></p>
+                <p><strong>Nombre:</strong> <span th:text="${proveedor.nombre}"></span></p>
+                <p><strong>Dirección:</strong> <span th:text="${proveedor.direccion != null ? proveedor.direccion : 'No especificada'}"></span></p> <!-- Se agrega manejo de null -->
+                <p><strong>Teléfono:</strong> <span th:text="${proveedor.telefono != null ? proveedor.telefono : 'No especificado'}"></span></p> <!-- Se agrega manejo de null -->
+                <p><strong>Categoría:</strong> <span th:text="${proveedor.proveedorCategoria.nombre}"></span></p> <!-- Nombre de la categoría del proveedor -->
             </div>
         </div>
         <div class="mt-3 text-center"> <!-- Centrar los botones -->
