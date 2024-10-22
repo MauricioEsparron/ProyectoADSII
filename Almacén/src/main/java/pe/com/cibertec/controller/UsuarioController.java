@@ -45,7 +45,6 @@ public class UsuarioController {
 		model.addAttribute("listarEstadoUsario", listaEstadoUsuario);
 		List<TipoUsuarioEntity> listaTipoUsuario = tipoUsuarioService.buscarTiposUsuario();
 		model.addAttribute("listarTipoUsuario", listaTipoUsuario);
-
 		return "registrar_usuario";
 	}
 
@@ -59,6 +58,11 @@ public class UsuarioController {
 	public String verDetalle(Model model, @PathVariable("id") Integer id) {
 		UsuarioEntity user = usuarioService.buscarUsuarioPorId(id);
 		model.addAttribute("user", user);
+		List<EstadoUsuarioEntity> listaEstadoUsuario = estadoUsuarioService.buscarEstadoUsuarios();
+		model.addAttribute("listarEstadoUsario", listaEstadoUsuario);
+		List<TipoUsuarioEntity> listaTipoUsuario = tipoUsuarioService.buscarTiposUsuario();
+		model.addAttribute("listarTipoUsuario", listaTipoUsuario);
+
 		return "detalle_usuario";
 	}
 
