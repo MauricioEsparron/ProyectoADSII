@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <h1>Editar Proveedor Categoría</h1>
-        <form th:action="@{/proveedor_categoria/editar_proveedor_categoria/{id}(id=${proveedorCategoria.id})}" th:object="${proveedorCategoria}" method="post">
+        <form th:action="@{/proveedorescategorias/editar_proveedorcategoria/{id}(id=${proveedorCategoria.id})}" th:object="${proveedorCategoria}" method="post">
             <input type="hidden" th:field="*{id}" /> <!-- Campo oculto para el ID -->
             <div class="form-group">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control" required>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Proveedor Categoría</button>
-            <a th:href="@{/proveedor_categoria/}" class="btn btn-secondary">Cancelar</a>
+            <a th:href="@{/proveedorescategorias/}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>
